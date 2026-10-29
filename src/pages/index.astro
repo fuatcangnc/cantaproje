@@ -1,42 +1,37 @@
 ---
 import Base from "../layouts/Base.astro";
-import { highlights, siteSettings, work } from "../data/site";
+import { process, services, siteSettings, stats } from "../data/site";
 ---
 
-<Base title={`${siteSettings.brandName} — ${siteSettings.tagline}`}>
+<Base>
 	<section class="max-w-3xl">
-		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">Hello, we are {siteSettings.brandName}</p>
+		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">Proje · Ruhsat · İşletme</p>
 		<h1 class="mt-4 text-5xl font-black tracking-[-0.06em] text-foreground sm:text-7xl">
-			{siteSettings.tagline}
+			Çanta atölyenizi ruhsatlı bir işletmeye dönüştürüyoruz.
 		</h1>
 		<p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">{siteSettings.description}</p>
 		<div class="mt-8 flex flex-wrap gap-3">
-			<a class="inline-flex min-h-12 items-center bg-primary px-6 text-xs font-black uppercase tracking-wider text-white hover:bg-primary-dark" href="#contact">Get in touch</a>
-			<a class="inline-flex min-h-12 items-center border border-border px-6 text-xs font-black uppercase tracking-wider text-foreground hover:border-primary hover:text-primary" href="#about">Learn more</a>
+			<a class="inline-flex min-h-12 items-center bg-primary px-6 text-xs font-black uppercase tracking-wider text-white hover:bg-primary-dark" href="#iletisim">Teklif alın</a>
+			<a class="inline-flex min-h-12 items-center border border-border px-6 text-xs font-black uppercase tracking-wider text-foreground hover:border-primary hover:text-primary" href="#hizmetler">Hizmetler</a>
 		</div>
-	</section>
-
-	<section id="about" class="mt-24 border-t border-border pt-12">
-		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">About</p>
-		<h2 class="mt-3 text-3xl font-black tracking-tight text-foreground">A simple site with a strong point of view.</h2>
-		<div class="mt-8 grid gap-4 sm:grid-cols-3">
+		<dl class="mt-12 grid grid-cols-3 gap-4 border-t border-border pt-8">
 			{
-				highlights.map((item) => (
-					<div class="border border-border bg-muted/40 p-5">
-						<h3 class="font-bold text-foreground">{item.title}</h3>
-						<p class="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+				stats.map((item) => (
+					<div>
+						<dt class="text-3xl font-black tracking-tight text-foreground">{item.value}</dt>
+						<dd class="mt-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{item.label}</dd>
 					</div>
 				))
 			}
-		</div>
+		</dl>
 	</section>
 
-	<section id="work" class="mt-24 border-t border-border pt-12">
-		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">Work</p>
-		<h2 class="mt-3 text-3xl font-black tracking-tight text-foreground">What we can build together.</h2>
-		<div class="mt-8 grid gap-4 sm:grid-cols-3">
+	<section id="hizmetler" class="mt-24 border-t border-border pt-12">
+		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">Hizmetler</p>
+		<h2 class="mt-3 text-3xl font-black tracking-tight text-foreground">Dosyadan açılışa kadar tek süreç.</h2>
+		<div class="mt-8 grid gap-4 sm:grid-cols-2">
 			{
-				work.map((item, index) => (
+				services.map((item, index) => (
 					<div class="border border-border p-5">
 						<span class="font-mono text-xs text-primary">{String(index + 1).padStart(2, "0")}</span>
 						<h3 class="mt-4 font-bold text-foreground">{item.title}</h3>
@@ -47,11 +42,46 @@ import { highlights, siteSettings, work } from "../data/site";
 		</div>
 	</section>
 
-	<section id="contact" class="mt-24 border-t border-border pt-12">
-		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">Contact</p>
-		<h2 class="mt-3 text-3xl font-black tracking-tight text-foreground">Let’s make something clear.</h2>
-		<a class="mt-6 inline-flex items-center text-lg font-bold text-primary hover:text-primary-dark" href={`mailto:${siteSettings.email}`}>
-			{siteSettings.email}
+	<section id="hakkimizda" class="mt-24 border-t border-border pt-12">
+		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">Hakkımızda</p>
+		<h2 class="mt-3 text-3xl font-black tracking-tight text-foreground">Çanta sektörüne odaklanmış küçük bir ekip.</h2>
+		<p class="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+			cantaproje, çanta üretimi yapan atölyelerin proje, ruhsat ve işletme süreçlerinde çalışır.
+			Mimarlık, makine ve mali müşavirlik tarafını tek bir dosyada topluyor; kurumlarla yazışmayı
+			sizin yerinize yürütüyoruz. Süslemeden uzak, takvimi belli bir iş akışı kurarız.
+		</p>
+		<div class="mt-8 grid gap-4 sm:grid-cols-4">
+			{
+				process.map((item) => (
+					<div class="border-t-2 border-primary pt-4">
+						<h3 class="text-sm font-bold text-foreground">{item.title}</h3>
+						<p class="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<section id="blog" class="mt-24 border-t border-border pt-12">
+		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">Blog</p>
+		<h2 class="mt-3 text-3xl font-black tracking-tight text-foreground">Ruhsat ve işletme notları.</h2>
+		<p class="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+			Mevzuat değişiklikleri, dosya hazırlığı ve atölye kurulumu üzerine kısa yazılar.
+		</p>
+		<a class="mt-6 inline-flex items-center text-lg font-bold text-primary hover:text-primary-dark" href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/blog`}>
+			Tüm yazılar →
 		</a>
+	</section>
+
+	<section id="iletisim" class="mt-24 border-t border-border pt-12">
+		<p class="text-xs font-black uppercase tracking-[0.2em] text-primary">İletişim</p>
+		<h2 class="mt-3 text-3xl font-black tracking-tight text-foreground">Atölyenizi konuşalım.</h2>
+		<div class="mt-6 flex flex-col gap-2">
+			<a class="inline-flex items-center text-lg font-bold text-primary hover:text-primary-dark" href={`mailto:${siteSettings.email}`}>
+				{siteSettings.email}
+			</a>
+			<span class="text-sm text-muted-foreground">{siteSettings.phone}</span>
+			<span class="text-sm text-muted-foreground">{siteSettings.location}</span>
+		</div>
 	</section>
 </Base>

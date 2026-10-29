@@ -3,7 +3,8 @@
 	"sites": [
 		{
 			"key": "root",
-			"name": "WuppyCMS Starter",
+			"name": "cantaproje",
+			"url": "https://app.wuppycms.com/preview/wuppy-fuatcangnc-cantaproje-zgxdr/",
 			"media": "public",
 			"publishing": "review",
 			"collections": ["blog", "authors"]
